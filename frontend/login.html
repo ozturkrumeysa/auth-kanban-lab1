@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kullanıcı Girişi</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fff5f8; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+    .card { background: #ffffff; padding: 32px; border-radius: 12px; box-shadow: 0 4px 16px rgba(214, 51, 132, 0.12); width: 340px; }
+    h2 { color: #b8326a; margin-top: 0; text-align: center; }
+    input { width: 100%; padding: 10px; margin: 8px 0 14px; border: 1px solid #f1c6d8; border-radius: 8px; box-sizing: border-box; }
+    button { width: 100%; padding: 11px; background: #e84c88; color: #fff; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
+    button:hover { background: #d03874; }
+    .links { margin-top: 14px; text-align: center; font-size: 13px; }
+    .links a { color: #b8326a; text-decoration: none; }
+    #message { margin-top: 12px; text-align: center; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Giriş Yap</h2>
+    <form id="loginForm">
+      <input type="email" id="email" placeholder="E-posta Adresi" required />
+      <input type="password" id="password" placeholder="Şifre" required />
+      <button type="submit">Giriş Yap</button>
+    </form>
+    <p id="message"></p>
+    <div class="links">
+      <a href="reset-password.html">Şifremi unuttum</a> | <a href="register.html">Kayıt ol</a>
+    </div>
+  </div>
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+      const msg = document.getElementById("message");
+      if (!email || password.length < 6) {
+        msg.style.color = "red";
+        msg.textContent = "Geçerli bir e-posta ve en az 6 karakterli şifre girin.";
+        return;
+      }
+      msg.style.color = "green";
+      msg.textContent = "Giriş formu doğrulandı.";
+    });
+  </script>
+</body>
+</html>
